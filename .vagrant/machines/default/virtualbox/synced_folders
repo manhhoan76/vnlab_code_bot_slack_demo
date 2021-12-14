@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant_data":{"guestpath":"/vagrant_data","hostpath":"/Users/vnlab/Desktop/Learn/Vagrant/AnsibleHost2/bot_slack","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/vnlab/Desktop/Learn/Vagrant/AnsibleHost2","disabled":false,"__vagrantfile":true}}}
