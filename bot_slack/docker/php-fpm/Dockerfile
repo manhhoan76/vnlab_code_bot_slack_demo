@@ -12,7 +12,10 @@ RUN apk update && apk --no-cache add git \
     unzip \
     zlib-dev \
     libpng-dev \
-    icu-dev
+    icu-dev \
+    apk-cron \
+    initscripts \
+    tini
 
 # Clear cache
 RUN rm -rf /var/cache/apk/*
@@ -28,12 +31,15 @@ RUN addgroup -S docker && adduser -S $user -G docker --uid $uid --home /home/$us
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:docker /home/$user
 
-RUN mkdir /etc/periodic/midnight
-ADD ./scripts/compute_leaderboards /etc/periodic/midnight/compute_leaderboards
-RUN chmod +x /etc/periodic/midnight/compute_leaderboards
-RUN crontab -l | { cat; echo "* * * * * php /var/www/botvnlab/yii bot"; } | crontab -
-CMD ['crond', '&&', 'gulp']
+# RUN mkdir /etc/periodic/midnight
+# ADD ./scripts/compute_leaderboards /etc/periodic/midnight/compute_leaderboards
+# RUN chmod +x /etc/periodic/midnight/compute_leaderboards
+RUN touch crontab.tmp \
+    && echo '* * * * * php /var/www/botlabvn/yii bot' > crontab.tmp \
+    && crontab crontab.tmp \
+    && rm -rf crontab.tmp
 
+CMD ["/usr/sbin/crond", "-f", "-d", "0"]
 # Set working directory
 WORKDIR /var/www/html
 

@@ -10,7 +10,7 @@ use app\models\Channel;
 
 class BotController extends BaseController
 {
-    const TOKEN = "xoxb-2523231391122-2832477402738-rnl2gNrwT6NVTx7luXCIdmTA";
+    const TOKEN = "xoxb-2523231391122-2832477402738-gd8BfSiJRBfIVrYcUvWtHijk";
 
     /**
      * init
