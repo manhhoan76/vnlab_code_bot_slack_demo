@@ -25,7 +25,9 @@ use Yii;
  */
 class BotController extends Controller
 {
-    const TOKEN = "xoxb-2523231391122-2832477402738-gd8BfSiJRBfIVrYcUvWtHijk";
+    // const TOKEN = "xoxb-2523231391122-2832477402738-INX94Bj4h8kiNI4YJzLapTds";
+    //TODO: Change to empty for push code 
+    const TOKEN = "";
     const URL_POST_MESSAGE = "https://slack.com/api/chat.postMessage"; //post
     const URL_GET_MESSAGE_HISTORY = "https://slack.com/api/conversations.history"; //get
     const URL_GET_CHANNEL_MEMBERS = "https://slack.com/api/conversations.members";

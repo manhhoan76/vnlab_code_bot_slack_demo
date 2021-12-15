@@ -8,7 +8,9 @@ use app\models\RemindProcess;
 
 class BotCheckController extends BaseController
 {
-    const TOKEN = "xoxb-2523231391122-2832477402738-gd8BfSiJRBfIVrYcUvWtHijk";
+    // const TOKEN = "xoxb-2523231391122-2832477402738-INX94Bj4h8kiNI4YJzLapTds";
+    //TODO: Change to empty for push code
+    const TOKEN = "";
     const URL_POST_MESSAGE = "https://slack.com/api/chat.postMessage"; //post
     const URL_GET_MESSAGE_HISTORY = "https://slack.com/api/conversations.history"; //get
     const URL_GET_CHANNEL_MEMBERS = "https://slack.com/api/conversations.members";
@@ -177,7 +179,8 @@ class BotCheckController extends BaseController
                 }
             } else {
                 $list_channel = $remind_channel->getRemindChannelByChannelId($process['id_channel']);
-                var_dump($list_channel);die;
+                var_dump($list_channel);
+                die;
                 if (!$list_channel) {
                     $remind_process->updateListRemindProcess($process['id']);
                     continue;
@@ -190,7 +193,8 @@ class BotCheckController extends BaseController
                 if ($list_channel['send_private']) {
                     $flg_notify_user++;
                 }
-                var_dump($flg_notify_channel);die;
+                var_dump($flg_notify_channel);
+                die;
                 //Check notify group or all
                 if ((!$list_channel['check_notify_channel'] && !$list_channel['check_notify_user']) || $flg_notify_channel == 2) {
                     //Send all
